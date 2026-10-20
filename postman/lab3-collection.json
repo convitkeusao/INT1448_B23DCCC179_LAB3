@@ -1,0 +1,35 @@
+{
+  "info": {
+    "name": "LAB 3 - Tuition Payment",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "feeUrl", "value": "http://localhost:4001" },
+    { "key": "bankUrl", "value": "http://localhost:4002" }
+  ],
+  "item": [
+    {
+      "name": "Get student fees",
+      "request": {
+        "method": "GET",
+        "url": "{{feeUrl}}/students/1/fees"
+      }
+    },
+    {
+      "name": "Pay tuition",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"amount\": 100000\n}" },
+        "url": "{{feeUrl}}/students/1/payments"
+      }
+    },
+    {
+      "name": "Bank stats",
+      "request": {
+        "method": "GET",
+        "url": "{{bankUrl}}/stats"
+      }
+    }
+  ]
+}
